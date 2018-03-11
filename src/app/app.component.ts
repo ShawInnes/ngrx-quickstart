@@ -13,28 +13,27 @@ export class AppComponent implements OnInit, OnDestroy {
   title = 'app';
   app: Observable<State>;
   subscription: Subscription;
+  isAuthenticated: boolean = false;
 
   constructor (private appService: AppService) { 
     this.app = appService.app;
   }
 
   ngOnInit() {
-    console.log('AppService ngOnInit');
     this.subscription = this.app
       .subscribe(
-        app => {
-          //Do something
-          console.log('app do something');
+        app => {          
+          this.isAuthenticated = app.isAuthenticated;
         },
         error => { 
-          console.log('app error');
+
         }
       );
+
+    this.appService.init();
   }
 
   ngOnDestroy() {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     this.subscription.unsubscribe();
   }
 }

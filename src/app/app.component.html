@@ -1,4 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="jumbotron">
   <h1>Welcome</h1>
+  <h3>{{app.isAuthenticated}}</h3>
 </div>
+
+<a class="btn btn-sm" (click)="appService.login()" *ngIf="!isAuthenticated">Login</a>
+<a class="btn btn-sm" (click)="appService.logout()" *ngIf="isAuthenticated">Logout</a>
