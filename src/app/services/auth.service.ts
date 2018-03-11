@@ -7,7 +7,6 @@ import { AppState } from '../reducers';
 import * as appActions from '../actions/app.actions';
 
 import Auth0Lock from 'auth0-lock';
-// import { Auth0Lock } from 'auth0-lock';
 
 @Injectable()
 export class AuthService {
@@ -15,7 +14,8 @@ export class AuthService {
   PROFILE_STORAGE_ITEM = 'profile';
 
   lockOptions = {
-    closable: false,
+    closable: true,
+    autoclose: true,
     theme: {
       primaryColor: '#FF6043',
       socialButtonStyle: 'small'
