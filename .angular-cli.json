@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",  
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "styles.scss"
       ],
       "scripts": [],
@@ -61,5 +61,8 @@
     "schematics": {
       "collection": "@ngrx/schematics"
     }
+  },
+  "warnings": {
+    "typescriptMismatch": false
   }
 }
