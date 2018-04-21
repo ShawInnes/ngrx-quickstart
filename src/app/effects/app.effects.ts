@@ -11,13 +11,26 @@ import * as app from '../actions/app.actions';
 
 @Injectable()
 export class AppEffects {
+  @Effect({ dispatch: false })
+  init$: Observable<Action> = this.actions$
+    .ofType(app.AppActionTypes.InitAction)
+    .switchMap(() => this.authService.init())
+    .map(() => null);
+
   @Effect()
-  init$: Observable<Action> = defer(() => {    
-    return of(new app.Init(this.authService.isAuthenticated()));
-  });
-  
+  login$: Observable<Action> = this.actions$
+    .ofType(app.AppActionTypes.LoginAction)
+    .switchMap(() => this.authService.login())
+    .map(() => new app.LoggingIn());
+
+  @Effect()
+  logout$: Observable<Action> = this.actions$
+    .ofType(app.AppActionTypes.LogoutAction)
+    .switchMap(() => this.authService.logout())
+    .map(() => new app.LoggedOut());
+
   constructor(
     private actions$: Actions,
     private authService: AuthService
-  ) {}
+  ) { }
 }

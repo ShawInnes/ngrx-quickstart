@@ -4,5 +4,7 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  AUTH0_CLIENT_ID: 'MY0iCToXm3YDT8Dj5bh8tDAvghHXmBZn',
+  AUTH0_DOMAIN: 'fairdealfx.au.auth0.com'
 };
